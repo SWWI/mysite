@@ -11,8 +11,15 @@ from .models import Question
 #         'hello': 'World'
 #     }
 #     return HttpResponse(template.render(context, request))
-last  = Question.object.first()
-context = {
-    'obj': last
-}
-return render(request "polls/index.html", context)
+def index(request):
+    last  = Question.objects.first()
+    context = {
+        'obj': last
+    }
+    return render(request, "base.html", context)
+
+def about(request):
+    return render(request, "index.html", {})
+
+def contact(request):
+    return render(request, "contact.html", {})
