@@ -3,6 +3,7 @@ from django.shortcuts import render
 # # Create your views here.
 from django.shortcuts import render
 from .models import Question
+from .models import Carousel
 # ef index(request):
 #     latest_question_list = Question.objects.order_by('-pub_date')[:5]
 #     template = loader.get_template('polls/index.html')
@@ -12,11 +13,12 @@ from .models import Question
 #     }
 #     return HttpResponse(template.render(context, request))
 def index(request):
-    last  = Question.objects.first()
-    context = {
-        'obj': last
-    }
-    return render(request, "base.html", context)
+    items = Carousel.objects.all()
+    # last  = Question.objects.first()
+    # context = {
+    #     'obj': last
+    # }
+    return render(request, "home.html", {'obj_list': items})
 
 def about(request):
     return render(request, "index.html", {})

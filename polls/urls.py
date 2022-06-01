@@ -2,10 +2,11 @@
 from django.urls import path
 
 from . import views
+app_name = 'polls'
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('about/', views.about),
-    path('contact/', views.contact)
+    path('myhome/', views.about, name = 'myhome'),
+    path('contact/', views.contact, name = 'contact')
 
 ]
